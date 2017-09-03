@@ -11,6 +11,4 @@ const createNameVariations = (name) => ({
     snakeName: _.snakeCase(name),
 });
 
-module.exports = {
-    createNameVariations
-};
+module.exports = { createNameVariations };

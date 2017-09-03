@@ -1,8 +1,8 @@
 const Generator = require('yeoman-generator');
-const appExists = require('../utils/appUtils').appExists;
-const getApps = require('../utils/appUtils').getApps;
+const appExists = require('../utils/app_utils').appExists;
+const getApps = require('../utils/app_utils').getApps;
 const _ = require('lodash');
-const { createNameVariations } = require('../utils/casingUtils');
+const { createNameVariations } = require('../utils/casing_utils');
 
 class ContainerGenerator extends Generator {
   constructor (args, opts) {

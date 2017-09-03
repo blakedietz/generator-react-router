@@ -1,6 +1,6 @@
-const Generator = require('yeoman-generator'); const appExists = require('../utils/appUtils').appExists;
-const getApps = require('../utils/appUtils').getApps;
-const { createNameVariations } = require('../utils/casingUtils');
+const Generator = require('yeoman-generator'); const appExists = require('../utils/app_utils').appExists;
+const getApps = require('../utils/app_utils').getApps;
+const { createNameVariations } = require('../utils/casing_utils');
 const mkdirp = require('mkdirp');
 
 class StoreGenerator extends Generator {
@@ -50,7 +50,7 @@ class StoreGenerator extends Generator {
     });
 
     this.fs.copyTpl(
-      this.templatePath(`redux_module.ejs`),
+      this.templatePath(`redux_module.js.ejs`),
       this.destinationPath(`${this.appName}/redux/modules/${duckNameVariations.snakeName}/${duckNameVariations.snakeName}.js`),
       templateConfig
     );

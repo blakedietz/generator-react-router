@@ -1,7 +1,7 @@
 const Generator = require('yeoman-generator');
-const appExists = require('../utils/appUtils').appExists;
-const getApps = require('../utils/appUtils').getApps;
-const { createNameVariations } = require('../utils/casingUtils');
+const appExists = require('../utils/app_utils').appExists;
+const getApps = require('../utils/app_utils').getApps;
+const { createNameVariations } = require('../utils/casing_utils');
 
 const componentTypes = {
   STATELESS: 'stateless',
@@ -57,19 +57,19 @@ class ComponentGenerator extends Generator {
     const templateConfig = { name: this.componentName, ...nameVariations };
 
     this.fs.copyTpl(
-      this.templatePath(`component.${this.componentType}.ejs`),
+      this.templatePath(`component.${this.componentType}.js.ejs`),
       this.destinationPath(`${this.appName}/components/${nameVariations.snakeName}/${nameVariations.snakeName}.js`),
       templateConfig
     );
 
     this.fs.copyTpl(
-      this.templatePath(`component.test.ejs`),
+      this.templatePath(`component.test.js.ejs`),
       this.destinationPath(`${this.appName}/components/${nameVariations.snakeName}/${nameVariations.snakeName}.test.js`),
       templateConfig
     );
 
     this.fs.copyTpl(
-      this.templatePath(`index.js.ejs`),
+      this.templatePath(`index.js.js.ejs`),
       this.destinationPath(`${this.appName}/components/${nameVariations.snakeName}/index.js`),
       templateConfig
     );

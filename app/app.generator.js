@@ -1,7 +1,7 @@
 const Generator = require('yeoman-generator');
 const mkdirp = require('mkdirp');
-const appExists = require('../utils/appUtils').appExists;
-const {createNameVariations} = require('../utils/casingUtils');
+const appExists = require('../utils/app_utils').appExists;
+const {createNameVariations} = require('../utils/casing_utils');
 
 class AppGenerator extends Generator {
   constructor (args, opts) {
@@ -145,21 +145,21 @@ class AppGenerator extends Generator {
 
       // Copy the app index into the application folder
       this.fs.copyTpl(
-        this.templatePath(`index.ejs`),
+        this.templatePath(`index.js.ejs`),
         this.destinationPath(`${basePath}/index.js`),
         templateConfig
       );
 
       // Copy the app container into the containers folder folder
       this.fs.copyTpl(
-        this.templatePath(`app.ejs`),
+        this.templatePath(`app.js.ejs`),
         this.destinationPath(`${basePath}/containers/${appNameVariations.snakeName}/${appNameVariations.snakeName}.js`),
         templateConfig
       );
 
       // Copy the app container into the containers folder folder
       this.fs.copyTpl(
-        this.templatePath(`index.container.ejs`),
+        this.templatePath(`index.container.js.ejs`),
         this.destinationPath(`${basePath}/containers/${appNameVariations.snakeName}/index.js`),
         templateConfig
       );
