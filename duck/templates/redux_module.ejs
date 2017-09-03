@@ -1,0 +1,53 @@
+/**
+ * Calendar "ducks module"
+ *
+ * Rules:
+ * A module...
+ *
+ * MUST export default a function called reducer()
+ * MUST export its action creators as functions
+ * MUST have action types in the form npm-module-or-app/reducer/ACTION_TYPE
+ * MAY export its action types as UPPER_SNAKE_CASE, if an external reducer needs to listen for them, or if it is a
+ * published reusable library
+ *
+ * These same guidelines are recommended for {actionType, action, reducer} bundles that are shared as reusable Redux
+ * libraries.
+ *
+ * Read more here: https://github.com/erikras/ducks-modular-redux
+ */
+
+// Action types
+
+export const actionTypes = {
+
+};
+
+// Reducer
+
+const initialState = {
+
+};
+
+const <%= camelName%>Reducer = (state = initialState, action) => {
+  switch(action.type) {
+    default:
+      return state;
+  }
+};
+
+export default <%= camelName %>Reducer;
+
+// Action creators
+
+// Selectors
+
+export const selectors = {
+
+};
+
+// Thunks
+
+export const thunks = {
+
+};
+

@@ -1,0 +1,37 @@
+/**
+*
+* <%= pascalName %> is a stateful component:
+*
+*/
+
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
+class <%= pascalName %> extends Component { // eslint-disable-line react/prefer-stateless-function
+  /*
+   * Note that the constructor doesn't have to be called for every stateful component. Overriding the constructor is
+   * only required when you need to access props or set state. This is merely an example and should be removed if
+   * you don't plan on using it for the cases that were mentioned.
+   */
+  constructor() {
+    super();
+    this.state = {
+      something: false,
+    };
+  }
+
+  render() {
+    return (
+      <div>
+          <%= pascalName %> is a stateful component. This component has access to more lifecycle methods of react and a
+          state.
+      </div>
+    );
+  }
+}
+
+// This is like your component method signature. If you pass any props into this update both.
+<%= pascalName %>.propTypes = {};
+<%= pascalName %>.defaultProps= {};
+
+export default <%= pascalName %>;

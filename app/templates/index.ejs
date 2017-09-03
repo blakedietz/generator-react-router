@@ -1,0 +1,24 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+<%if (appConfig.usesRedux) { %>
+import { Provider } from 'react-redux';
+import configureStore from './redux/configure_store';
+<%}%>
+import <%= pascalName -%> from './containers/<%= snakeName -%>';
+
+<%if (appConfig.usesRedux) { -%>
+
+const store = configureStore();
+
+ReactDOM.render(
+  <Provider store={store}>
+    <<%= pascalName -%> />
+  </Provider>,
+    document.getElementById('<%= snakeName %>')
+);
+<%} else { -%>
+ReactDOM.render(
+  <<%= pascalName -%> />,
+  document.getElementById('<%= snakeName %>')
+);
+<%}-%>

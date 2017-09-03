@@ -1,0 +1,41 @@
+/**
+ * <%= pascalName %>: This component is responsible for coordinating all components and containers for the
+ * <%= pascalName %> application.
+ */
+
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+<%if (appConfig.usesRedux) { -%>
+import { connect } from 'react-redux';
+<% } -%>
+// #boilerplate Import your application components here
+
+class <%= pascalName %> extends Component {
+    render() {
+        return (
+            <div>
+                #boilerplate Use your application components here.
+            </div>
+        );
+    }
+}
+
+<%= pascalName %>.propTypes = {};
+<%= pascalName %>.defaultProps = {};
+
+<%if (appConfig.usesRedux) { -%>
+const mapStateToProps = (state) => {
+    return {
+        state,
+    };
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        dispatch,
+    };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(<%= pascalName %>);
+<% } else{ -%>
+export default <%= pascalName %>;
+<% } -%>

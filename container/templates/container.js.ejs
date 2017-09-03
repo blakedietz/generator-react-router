@@ -1,0 +1,42 @@
+/**
+* <%= pascalName %> Container
+*/
+
+import React from 'react';
+import PropTypes from 'prop-types';
+
+<%if (appConfig.usesRedux) { %>
+import { connect } from 'react-redux';
+<%}%>
+
+class <%= pascalName %> extends React.Component { // eslint-disable-line react/prefer-stateless-function
+  render() {
+    return (
+      <div>
+        This is <%= pascalName %> container!
+      </div>
+    );
+  }
+}
+
+// This is like your component method signature. If you pass any props into this update both.
+<%= pascalName %>.propTypes = {};
+<%= pascalName %>.defaultProps= {};
+
+<%if (appConfig.usesRedux) { %>
+function mapStateToProps(state) {
+  return {
+    state,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    dispatch,
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(<%= pascalName %>);
+<% } else{ %>
+export default <%= pascalName %>
+<% } %>
