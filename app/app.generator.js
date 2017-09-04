@@ -1,7 +1,7 @@
 const Generator = require('yeoman-generator');
 const mkdirp = require('mkdirp');
 const appExists = require('../utils/app_utils').appExists;
-const {createNameVariations} = require('../utils/casing_utils');
+const { createNameVariations } = require('../utils/casing_utils');
 
 class AppGenerator extends Generator {
   constructor (args, opts) {
@@ -59,7 +59,7 @@ class AppGenerator extends Generator {
       kebabName: `root-${this.nameVariations.kebabName}`,
       snakeName: `root_${this.nameVariations.snakeName}`,
     };
-    const templateConfig = {appConfig: this.appConfig, ...appNameVariations};
+    const templateConfig = Object.assign({}, { appConfig: this.appConfig }, appNameVariations);
 
     if (this.appAlreadyExists) {
       this.log(`${templateConfig.kebabName} already exists. Please remove the directory and run again.`);
@@ -118,28 +118,19 @@ class AppGenerator extends Generator {
         this.fs.copyTpl(
           this.templatePath(`configure_store.js.ejs`),
           this.destinationPath(`${basePath}/redux/configure_store.js`),
-          {
-            ...templateConfig,
-            isProd: false
-          }
+          Object.assign({}, templateConfig, { isProd: false }),
         );
 
         this.fs.copyTpl(
           this.templatePath(`configure_store.dev_prod.js.ejs`),
           this.destinationPath(`${basePath}/redux/configure_store.prod.js`),
-          {
-            ...templateConfig,
-            isProd: true
-          }
+          Object.assign({}, templateConfig, { isProd: true}),
         );
 
         this.fs.copyTpl(
           this.templatePath(`configure_store.dev_prod.js.ejs`),
           this.destinationPath(`${basePath}/redux/configure_store.dev.js`),
-          {
-            ...templateConfig,
-            isProd: false
-          }
+          Object.assign({}, templateConfig, { isProd: false }),
         );
       }
 

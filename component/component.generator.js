@@ -54,7 +54,7 @@ class ComponentGenerator extends Generator {
 
   writing() {
     const nameVariations = createNameVariations(this.componentName);
-    const templateConfig = { name: this.componentName, ...nameVariations };
+    const templateConfig = Object.assign({}, { name: this.componentName }, nameVariations);
 
     this.fs.copyTpl(
       this.templatePath(`component.${this.componentType}.js.ejs`),
@@ -69,7 +69,7 @@ class ComponentGenerator extends Generator {
     );
 
     this.fs.copyTpl(
-      this.templatePath(`index.js.js.ejs`),
+      this.templatePath(`index.js.ejs`),
       this.destinationPath(`${this.appName}/components/${nameVariations.snakeName}/index.js`),
       templateConfig
     );

@@ -1,9 +1,8 @@
 const Generator = require('yeoman-generator'); const appExists = require('../utils/app_utils').appExists;
 const getApps = require('../utils/app_utils').getApps;
 const { createNameVariations } = require('../utils/casing_utils');
-const mkdirp = require('mkdirp');
 
-class StoreGenerator extends Generator {
+class DuckGenerator extends Generator {
   constructor (args, opts) {
     super(args, opts);
 
@@ -39,28 +38,22 @@ class StoreGenerator extends Generator {
   }
 
   writing () {
-    const appNameVariations = createNameVariations(this.appName);
     const duckNameVariations = createNameVariations(this.duckName);
-    const templateConfig = { appName: this.appName, ...duckNameVariations };
-    const basePath = `${this.destinationRoot()}/${duckNameVariations.snakeName}`;
-
-    mkdirp.sync(`${basePath}/${this.appName}/redux/modules/${duckNameVariations.snakeName}`, (error) => {
-      this.log(error);
-      return false;
-    });
+    const templateConfig = Object.assign({}, duckNameVariations, { appName: this.appName });
+    const basePath = `${this.destinationRoot()}/${this.appName}/redux/modules/${duckNameVariations.snakeName}`;
 
     this.fs.copyTpl(
       this.templatePath(`redux_module.js.ejs`),
-      this.destinationPath(`${this.appName}/redux/modules/${duckNameVariations.snakeName}/${duckNameVariations.snakeName}.js`),
+      this.destinationPath(`${basePath}/${duckNameVariations.snakeName}.js`),
       templateConfig
     );
 
     this.fs.copyTpl(
       this.templatePath(`redux_module.index.js.ejs`),
-      this.destinationPath(`${this.appName}/redux/modules/${duckNameVariations.snakeName}/index.js`),
+      this.destinationPath(`${basePath}/index.js`),
       templateConfig
     );
   }
 }
 
-module.exports = StoreGenerator;
+module.exports = DuckGenerator;

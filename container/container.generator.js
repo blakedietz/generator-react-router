@@ -50,11 +50,7 @@ class ContainerGenerator extends Generator {
 
   writing () {
     const nameVariations = createNameVariations(this.containerName);
-    const templateConfig = {
-      appConfig: this.appConfig,
-      name: this.containerName,
-      ...nameVariations
-    };
+    const templateConfig = Object.assign({} ,{ appConfig: this.appConfig, name: this.containerName }, nameVariations );
     const containerPath = `${this.appName}/containers/${nameVariations.snakeName}`;
 
     this.fs.copyTpl(
