@@ -4,9 +4,13 @@
 
 ## Requirements
 
+### node
+
 Since this module is written in ES6, this module requires node 4.0.0 or higher.
 
-## Commands
+### Packages
+
+You will need two globally installed packages in order to use the generator.
 
 ```
 # Make sure both are installed globally
@@ -21,7 +25,8 @@ All commands can be invoked with yeoman by using `yo tsheets:command-name`.
 
 ### Description
 
-Creates a feature level directory in your source tree of the given application name.
+Creates a feature level directory in your source tree of the given application name. This is the first command that you 
+will run for a feature level directory. Consider this the "seeding" command.
 
 If the app does not use redux, a directory with the given structure would be created:
 
@@ -67,8 +72,7 @@ yo tsheets:app
 
 ### Description
 
-Creates a stateful or stateless "dumb component" inside of the components directory of the given name. This is the first
-command that you will run for a feature level directory. Consider this the "seeding" command.
+Creates a stateful or stateless "dumb component" inside of the components directory of the given name.
 
 ```
 application_name
