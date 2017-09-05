@@ -118,19 +118,19 @@ class AppGenerator extends Generator {
         this.fs.copyTpl(
           this.templatePath(`configure_store.js.ejs`),
           this.destinationPath(`${basePath}/redux/configure_store.js`),
-          Object.assign({}, templateConfig, { isProd: false }),
+          Object.assign({}, templateConfig, { isProd: false })
         );
 
         this.fs.copyTpl(
           this.templatePath(`configure_store.dev_prod.js.ejs`),
           this.destinationPath(`${basePath}/redux/configure_store.prod.js`),
-          Object.assign({}, templateConfig, { isProd: true}),
+          Object.assign({}, templateConfig, { isProd: true})
         );
 
         this.fs.copyTpl(
           this.templatePath(`configure_store.dev_prod.js.ejs`),
           this.destinationPath(`${basePath}/redux/configure_store.dev.js`),
-          Object.assign({}, templateConfig, { isProd: false }),
+          Object.assign({}, templateConfig, { isProd: false })
         );
       }
 
@@ -155,7 +155,6 @@ class AppGenerator extends Generator {
         templateConfig
       );
     }
-    ;
   }
 }
 
