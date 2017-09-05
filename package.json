@@ -1,12 +1,13 @@
 {
   "name": "generator-tsheets",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "description": "A generator to make react and redux development more simple",
   "files": [
     "app",
     "component",
     "container",
-    "duck"
+    "duck",
+    "utils"
   ],
   "main": "index.js",
   "scripts": {
