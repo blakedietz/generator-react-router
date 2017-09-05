@@ -1,5 +1,7 @@
 # About
 
+A generator for scaffolding react features, components, containers and ducks. This reduces the amount of boilerplate you have to create in order to get you focusing on writing the real important code.
+
 # Installation
 
 ## Requirements
