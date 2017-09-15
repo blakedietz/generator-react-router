@@ -12,7 +12,7 @@ class AppGenerator extends Generator {
 
     this.appConfig = {
       usesRedux: false,
-      usesSagas: false,
+      usesThunks: false,
     };
 
     this.nameVariations = {
@@ -36,14 +36,14 @@ class AppGenerator extends Generator {
       },
       {
         type: 'confirm',
-        name: 'usesSagas',
-        message: `Will your application need to use sagas? If you aren't sure just choose no.`
+        name: 'usesThunks',
+        message: `Will your application need to use thunks? If you aren't sure just choose no.`
       }])
       .then((answers) => {
         this.appName = answers.appName;
         this.nameVariations = createNameVariations(this.appName);
         this.appConfig.usesRedux = answers.usesRedux;
-        this.appConfig.usesSagas = answers.usesSagas;
+        this.appConfig.usesThunks = answers.usesThunks;
         const basePath = this.destinationRoot();
         this.appAlreadyExists = appExists(basePath, this.appName);
         if (this.appAlreadyExists) {
