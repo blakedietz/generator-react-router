@@ -8,6 +8,8 @@ import PropTypes from 'prop-types';
 <%if (appConfig.usesRedux) { -%>
 import { connect } from 'react-redux';
 <% } -%>
+import '<%= snakeName %>.css';
+
 // #boilerplate Import your application components here
 
 class <%= pascalName %> extends Component {

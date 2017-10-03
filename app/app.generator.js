@@ -1,7 +1,7 @@
 const Generator = require('yeoman-generator');
 const mkdirp = require('mkdirp');
 const appExists = require('../utils/app_utils').appExists;
-const { createNameVariations } = require('../utils/casing_utils');
+const {createNameVariations} = require('../utils/casing_utils');
 
 class AppGenerator extends Generator {
   constructor (args, opts) {
@@ -28,7 +28,7 @@ class AppGenerator extends Generator {
       type: 'input',
       name: 'appName',
       message: 'Enter the name of the application that you want to create.',
-      },
+    },
       {
         type: 'confirm',
         name: 'usesRedux',
@@ -49,7 +49,7 @@ class AppGenerator extends Generator {
         if (this.appAlreadyExists) {
           this.log('The application already exists. Please choose a different application name');
         }
-    });
+      });
   }
 
   writing () {
@@ -59,7 +59,7 @@ class AppGenerator extends Generator {
       kebabName: `root-${this.nameVariations.kebabName}`,
       snakeName: `root_${this.nameVariations.snakeName}`,
     };
-    const templateConfig = Object.assign({}, { appConfig: this.appConfig }, appNameVariations);
+    const templateConfig = Object.assign({}, {appConfig: this.appConfig}, appNameVariations);
 
     if (this.appAlreadyExists) {
       this.log(`${templateConfig.kebabName} already exists. Please remove the directory and run again.`);
@@ -118,19 +118,19 @@ class AppGenerator extends Generator {
         this.fs.copyTpl(
           this.templatePath(`configure_store.js.ejs`),
           this.destinationPath(`${basePath}/redux/configure_store.js`),
-          Object.assign({}, templateConfig, { isProd: false })
+          Object.assign({}, templateConfig, {isProd: false})
         );
 
         this.fs.copyTpl(
           this.templatePath(`configure_store.dev_prod.js.ejs`),
           this.destinationPath(`${basePath}/redux/configure_store.prod.js`),
-          Object.assign({}, templateConfig, { isProd: true})
+          Object.assign({}, templateConfig, {isProd: true})
         );
 
         this.fs.copyTpl(
           this.templatePath(`configure_store.dev_prod.js.ejs`),
           this.destinationPath(`${basePath}/redux/configure_store.dev.js`),
-          Object.assign({}, templateConfig, { isProd: false })
+          Object.assign({}, templateConfig, {isProd: false})
         );
       }
 
@@ -143,8 +143,15 @@ class AppGenerator extends Generator {
 
       // Copy the app container into the containers folder folder
       this.fs.copyTpl(
-        this.templatePath(`app.js.ejs`),
+        this.templatePath(`root_container.js.ejs`),
         this.destinationPath(`${basePath}/containers/${appNameVariations.snakeName}/${appNameVariations.snakeName}.js`),
+        templateConfig
+      );
+
+      // Copy the the root_container style to the
+      this.fs.copyTpl(
+        this.templatePath(`root_container.css.ejs`),
+        this.destinationPath(`${basePath}/containers/${appNameVariations.snakeName}/${appNameVariations.snakeName}.css`),
         templateConfig
       );
 

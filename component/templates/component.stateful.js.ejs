@@ -6,8 +6,11 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+<%if (hasStyleSheet) { %>
+import '<%= snakeName %>.css';
+<%}%>
 
-class <%= pascalName %> extends Component { // eslint-disable-line react/prefer-stateless-function
+class <%= pascalName %> extends Component {
   /*
    * Note that the constructor doesn't have to be called for every stateful component. Overriding the constructor is
    * only required when you need to access props or set state. This is merely an example and should be removed if
@@ -32,6 +35,6 @@ class <%= pascalName %> extends Component { // eslint-disable-line react/prefer-
 
 // This is like your component method signature. If you pass any props into this update both.
 <%= pascalName %>.propTypes = {};
-<%= pascalName %>.defaultProps= {};
+<%= pascalName %>.defaultProps = {};
 
 export default <%= pascalName %>;

@@ -1,4 +1,5 @@
 /**
+ * <%if (!isProd) {-%>
  * configureStore for development purposes. This file is responsible for adding developer tools to the current build
  * and detecting whether or not the dev tools are available from within the browser e.g. Redux Devtools. This file
  * also takes into account hot module reloading (hmr for short) so the store reducers can be overwriittern on the fly.
@@ -6,6 +7,14 @@
  * NOTE:
  * If you make changes to functionality in this file, make sure to make those changes in the development
  * (configure_store.prod.js) file as well.
+ * <%}-%>
+ *
+ * <%if (isProd) {-%>
+ * configureStore for production.
+ * NOTE:
+ * If you make changes to functionality in this file, make sure to make those changes in the development
+ * (configure_store.dev.js) file as well.
+ * <%}-%>
  */
 
 import { createStore, applyMiddleware, compose } from 'redux';
@@ -31,10 +40,10 @@ export default function configureStore(initialState) {
      <%if (appConfig.usesThunks) {-%>
       thunk,
      <%}-%>
-      <%if (!isProd) {-%>
+     <%if (!isProd) {-%>
       createLogger(),
-      <%}-%>
-    ),
+     <%}-%>
+      ),
     <%}-%>
     ),
   );

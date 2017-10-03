@@ -6,6 +6,9 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+<%if (hasStyleSheet) { %>
+import '<%= snakeName %>.css';
+<%}%>
 
 const <%= pascalName %> = (props) => {
   return (
@@ -17,6 +20,6 @@ const <%= pascalName %> = (props) => {
 
 // This is like your component method signature. If you pass any props into this update both.
 <%= pascalName %>.propTypes = {};
-<%= pascalName %>.defaultProps= {};
+<%= pascalName %>.defaultProps = {};
 
 export default <%= pascalName %>;
